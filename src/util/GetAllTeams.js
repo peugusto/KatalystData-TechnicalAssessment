@@ -11,4 +11,6 @@ export default async function GetAllTeams(){
 
     const teams = await content.json();
     console.log(teams);
+    
+    return teams;
 }
