@@ -1,3 +1,5 @@
+import getMockedGroups from "./MockTeams";
+
 export default async function GetAllTeams(){
     const content = await fetch("/api/WorldCup/GetAllTeams", {
         headers:{
@@ -6,7 +8,9 @@ export default async function GetAllTeams(){
     });
 
     if(!content.ok){
-        throw new Error("ERROR API")
+        const teams = getMockedGroups();
+        console.error("ERRO API")
+        return teams;
     }
 
     const teams = await content.json();

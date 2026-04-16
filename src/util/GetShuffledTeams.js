@@ -1,8 +1,9 @@
 import GetAllTeams from "./GetAllTeams";
 
-export async function GetShuffledTeams() {
+export async function GetShuffledTeams(mockdata = null) {
 
-    const teams = shuffle(await GetAllTeams());
+    const data = mockdata ? mockdata : await GetAllTeams()
+    const teams = shuffle(data);
 
     const grupos = [];
     const tamanhoGrupo = 4;
