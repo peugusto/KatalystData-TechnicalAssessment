@@ -1,4 +1,56 @@
-export default function GetFlags(token){
+export default function GetFlags(token) {
+    const flagsMap = {
+        'd3456521-27f6-420e-90dc-8454e410bb92': 'DZ',
+        'bb98babb-7bc5-405d-9212-81bca6546e50': 'MX',
+        '33eee4e2-3425-4816-ae7f-0d521d2764cc': 'MA',
+        '805c0270-bad9-4ca4-ae38-212d2ec7ee64': 'RS',
+        '7cbd4811-3668-470b-a3f1-05239b315a91': 'CL',
+        '72dd9e6f-57ea-48c9-8c68-4718e2d9b1c1': 'AU',
+        'dc7e4070-0a4a-4278-83a9-185931e4e971': 'DE',
+        '39b668f0-48af-49b8-9aff-d1e0a183c81c': 'IT',
+        'd09eb1b1-ff05-4293-842e-119d81f05af1': 'UY',
+        '95db61a0-d734-4fdf-b77b-2854a1fa38e9': 'NG',
+        '97f752b5-4a22-451d-bbdc-fd1f279a316e': 'CA',
+        '9fcac5ce-3326-45b4-9096-ebaed7016764': 'CM',
+        'a0a43625-f5f3-4e6e-8b3c-f600ebafe399': 'FR',
+        'b30fa7fa-6116-4707-8a05-b94ece845311': 'ID',
+        'a2dfb500-027f-4c54-ad48-6ab4aa6307fe': 'JM',
+        '2e33774b-1dc9-43a0-bc9d-3371adf770d4': 'CI',
+        'bc7a5176-d637-4a8d-8cf4-3c4323de831b': 'PA',
+        'dbcd3000-b384-4727-8d63-c2cc93499d43': 'CR',
+        '5a440db3-1fea-429d-891a-0474474b7830': 'ES',
+        '7f127f06-5fa7-4c6c-b6a8-2c04ba4e1fb3': 'BE',
+        '746ab702-4d74-4cce-85d1-de840e612349': 'US',
+        '8a49e912-0244-44f3-885e-f8237d7f3a27': 'TN',
+        '64b3dd62-ba5a-4896-84ec-54135b9a63da': 'JP',
+        '84225cdb-147c-4291-89f8-9782b1b4253c': 'BR',
+        '3462d792-ab62-4c17-bcaa-01d059897e45': 'IQ',
+        'b15315c7-85c7-47ae-9808-4b6e204c5a91': 'NL',
+        '876f43aa-b1eb-4ed6-8a0b-cf2912f3769c': 'GH',
+        'd7beecf0-cae0-4738-ad1f-77152f4a4dae': 'PT',
+        'd529e6b7-b336-492f-a801-883e37927ecd': 'VE',
+        '29fbd738-62d8-40ef-a35a-4317a030433a': 'CO',
+        '55d4a970-8d82-4097-abc9-d2ad37384b2e': 'CH',
+        'a09ad526-2ad6-46a7-b1d5-f49582a00ce2': 'GB-SCT',
+        '1910c9c0-8290-4135-8c3c-226296a354c6': 'EC', 
+        'e0a49cc8-b189-4d52-8bc3-9eea877c53d2': 'EG', 
+        '20c54690-b256-4eb7-a2b1-95e843354f18': 'GB', 
+        '2b370344-963a-48c9-a5e7-4453c6a53b3f': 'AR', 
+        '9cdd0f07-6737-42cc-afbc-adb33f47b994': 'TR', 
+        '67104310-f0fc-4c53-abe8-2e750336a519': 'HU', 
+        '1379e8fe-5ffe-406b-91fb-5c510cc3da56': 'KR', 
+        'fd01c056-0cc9-4ff6-8c39-c40025b7ca23': 'UZ', 
+        'a84b8b53-8168-4a12-b5b8-cc2fde42628d': 'JO', 
+        '8c1ad96b-8335-4569-a070-8e424608fc9c': 'DK', 
+        '3a8406ba-634e-4371-9d96-2cc2256db478': 'IR',
+        'a5ff67f3-2504-49ab-ac8b-89a1c8e1db80': 'NZ',
+        '8c4062cf-25a8-41a2-b1a2-2e030cc964dc': 'AT',
+        'd06a51b7-6dbc-4124-974a-afc5ce64be8a': 'SN',
+    };
 
-    
+    const countryCode = flagsMap[token];
+
+    if (!countryCode) return '';
+
+    return `https://flagsapi.com/${countryCode}/flat/64.png`;
 }
