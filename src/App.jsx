@@ -5,86 +5,102 @@ import GetFlags from './util/GetFlags'
 
 function App() {
   const [groups, setGroups] = useState([])
-  // Estado para armazenar as posições: { indexDoGrupo: [token1, token2, token3] }
-  const [standings, setStandings] = useState({})
+  const [groupTables, setGroupTables] = useState([]) 
 
   useEffect(() => {
-    async function fetchData() {
-      // Chama sua função utilitária que busca da API e embaralha
-      const data = await GetShuffledTeams()
-      setGroups(data)
+    async function initSimulacao() {
+        const teams = await GetShuffledTeams()
+        setGroups(teams)
+      
+
+        const tables = teams.map(group => {
+        const matches = gerarPartidas(group)
+        const matchesComPlacar = simularResultados(matches)
+        console.log(matches)
+        return calcularClassificacao(group, matchesComPlacar)
+      })
+      
+      setGroupTables(tables)
     }
-    fetchData()
+    initSimulacao()
   }, [])
 
-  const handleTeamClick = (groupIndex, teamToken) => {
-    setStandings((prev) => {
-      const currentGroupStanding = prev[groupIndex] || []
 
-      // Se o time já foi clicado, remove ele (toggle para desfazer)
-      if (currentGroupStanding.includes(teamToken)) {
-        return {
-          ...prev,
-          [groupIndex]: currentGroupStanding.filter((token) => token !== teamToken),
-        }
-      }
+  const gerarPartidas = (group) => {
+    const [t1, t2, t3, t4] = group
+    return [
+      { home: t1, away: t2 }, { home: t3, away: t4 }, 
+      { home: t1, away: t3 }, { home: t2, away: t4 }, 
+      { home: t1, away: t4 }, { home: t2, away: t3 }  
+    ]
+  }
 
-      // Limita a seleção aos 3 primeiros lugares
-      if (currentGroupStanding.length >= 3) return prev
+  
+  const simularResultados = (matches) => {
+    return matches.map(m => ({
+      ...m,
+      golsHome: Math.floor(Math.random() * 5),
+      golsAway: Math.floor(Math.random() * 5)
+    }))
+  }
 
-      // Adiciona o time na próxima posição disponível do grupo
-      return {
-        ...prev,
-        [groupIndex]: [...currentGroupStanding, teamToken],
-      }
+ 
+  const calcularClassificacao = (group, matches) => {
+    let stats = group.map(team => ({
+      ...team,
+      pts: 0, sg: 0, gp: 0
+    }))
+
+    matches.forEach(m => {
+      const h = stats.find(t => t.token === m.home.token)
+      const a = stats.find(t => t.token === m.away.token)
+
+      h.gp += m.golsHome
+      h.sg += (m.golsHome - m.golsAway)
+      a.gp += m.golsAway
+      a.sg += (m.golsAway - m.golsHome)
+
+      if (m.golsHome > m.golsAway) h.pts += 3
+      else if (m.golsAway > m.golsHome) a.pts += 3
+      else { h.pts += 1; a.pts += 1 }
+    })
+
+    return stats.sort((a, b) => {
+      if (b.pts !== a.pts) return b.pts - a.pts
+      if (b.sg !== a.sg) return b.sg - a.sg
+      return Math.random() - 0.5 
     })
   }
 
   return (
     <div className="container">
-      <h1 className="title">Mundial de Seleções 2026</h1>
+      <h1 className="title">Simulador Mundial 2026</h1>
 
       <div className="grid-groups">
-        {groups.map((group, index) => (
-          <div key={index} className="group-card">
-            <div className="group-header">
-              GRUPO {String.fromCharCode(65 + index)}
-            </div>
-
-            <div className="team-list">
-              {group.map((team) => {
-                const flagUrl = GetFlags(team.token)
-                
-                // Verifica a posição do time no ranking do grupo
-                const groupStanding = standings[index] || []
-                const positionIndex = groupStanding.indexOf(team.token)
-                const position = positionIndex !== -1 ? positionIndex + 1 : null
-
-                return (
-                  <div 
-                    key={team.token} 
-                    className={`team-row ${position ? 'selected' : ''}`}
-                    onClick={() => handleTeamClick(index, team.token)}
-                  >
-                    <div className="flag-box">
-                      {flagUrl ? (
-                        <img src={flagUrl} alt={team.nome} className="flag-img" />
-                      ) : (
-                        <span>🏳️</span>
-                      )}
-                    </div>
-                    
-                    <span className="team-name">{team.nome}</span>
-
-                    {position && (
-                      <div className="position-badge">
-                        {position}º
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
+        {groupTables.map((table, idx) => (
+          <div key={idx} className="group-card">
+            <div className="group-header">GRUPO {String.fromCharCode(65 + idx)}</div>
+            <table className="group-table">
+              <thead>
+                <tr>
+                  <th align="left">Seleção</th>
+                  <th>P</th>
+                  <th>SG</th>
+                </tr>
+              </thead>
+              <tbody>
+                {table.map((team, pos) => (
+                  <tr key={team.token} className={pos < 2 ? 'classificado' : ''}>
+                    <td className="team-name-col">
+                      <img src={GetFlags(team.token)} alt="" className="mini-flag" />
+                      {team.nome}
+                    </td>
+                    <td>{team.pts}</td>
+                    <td>{team.sg}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         ))}
       </div>

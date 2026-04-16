@@ -1,166 +1,116 @@
-*{
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 .container {
   padding: 20px;
-  background-color: #1a1a1a;
+  background-color: #f4f7f6; 
   min-height: 100vh;
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333; 
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 .title {
   text-align: center;
   margin-bottom: 40px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  color: #00d4ff;
-  font-size: 2rem;
+  letter-spacing: 4px;
+  background: linear-gradient(to right, #007bff, #00c853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 900;
+  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.1));
 }
 
 .grid-groups {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .group-card {
-  background-color: #252525;
+  background-color: #ffffff;
   border-radius: 12px;
-  border: 1px solid #333;
+  border: 1px solid #e0e6ed;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   transition: transform 0.2s;
 }
 
 .group-card:hover {
   transform: translateY(-5px);
-  border-color: #00d4ff;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .group-header {
-  background: linear-gradient(90deg, #00d4ff, #008fb3);
-  color: #000;
+  background: linear-gradient(135deg, #7022ff, #f21b6d);
+  color: #ffffff;
   padding: 12px;
   font-weight: 800;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
 
-.team-list {
-  padding: 15px;
-}
 
-.team-row {
-  display: flex;
-  align-items: center;
-  padding: 10px 5px;
-  border-bottom: 1px solid #333;
-}
-
-.team-row:last-child {
-  border-bottom: none;
-}
-
-.flag-box {
-  width: 35px;
-  height: 25px;
-  margin-right: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #333;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.flag-img {
+.group-table {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  border-collapse: collapse;
 }
 
-.team-name {
-  font-size: 1rem;
+.group-table th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 12px 5px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.group-table td {
+  padding: 14px 8px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.team-name-col {
+  text-align: left !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-weight: 600;
-  color: #e0e0e0;
 }
 
-.team-row.selected {
-  background-color: rgba(0, 212, 255, 0.1);
-  border-left: 4px solid #00d4ff;
+.mini-flag {
+  width: 26px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: none;
+  display: block;
 }
 
-.position-badge {
-  margin-left: auto;
-  background-color: #00d4ff;
-  color: #000;
-  font-weight: bold;
-  font-size: 0.8rem;
-  padding: 2px 8px;
-  border-radius: 10px;
-  min-width: 25px;
-  text-align: center;
+.classificado {
+  background-color: #f0fff4; 
 }
 
-
-.team-row:hover {
-  background-color: #333;
+.classificado td:first-child {
+  border-left: 5px solid #22c55e;
 }
 
-/* --- RESPONSIVIDADE --- */
+.group-table td:nth-child(2), 
+.group-table td:nth-child(3) {
+  font-weight: 700;
+  color: #0f172a;
+}
 
-/* Ajustes para Tablets e telas médias */
 @media (max-width: 768px) {
-  .title {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-  }
-
-  .grid-groups {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 15px;
-    padding: 0 10px;
-  }
-
-  .group-header {
-    font-size: 1rem;
-    padding: 10px;
-  }
-}
-
-/* Ajustes para Celulares Pequenos */
-@media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
-
-  .grid-groups {
-    /* Em telas muito pequenas, força um card por linha para melhor leitura */
-    grid-template-columns: 1fr; 
-  }
-
-  .team-name {
-    font-size: 0.9rem;
-  }
-
-  .flag-box {
-    width: 30px;
-    height: 20px;
-    margin-right: 10px;
-  }
-
-  .position-badge {
-    font-size: 0.7rem;
-    padding: 1px 6px;
-  }
-}
-
-/* Ajuste para telas Ultra-Wide (opcional) */
-@media (min-width: 1400px) {
-  .grid-groups {
-    max-width: 1400px;
-    grid-template-columns: repeat(4, 1fr); /* Trava em 4 colunas se a tela for gigante */
-  }
+  .title { font-size: 1.8rem; }
+  .grid-groups { padding: 0 10px; }
 }
