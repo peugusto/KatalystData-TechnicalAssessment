@@ -86,3 +86,81 @@
   font-weight: 600;
   color: #e0e0e0;
 }
+
+.team-row.selected {
+  background-color: rgba(0, 212, 255, 0.1);
+  border-left: 4px solid #00d4ff;
+}
+
+.position-badge {
+  margin-left: auto;
+  background-color: #00d4ff;
+  color: #000;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  min-width: 25px;
+  text-align: center;
+}
+
+
+.team-row:hover {
+  background-color: #333;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Ajustes para Tablets e telas médias */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .grid-groups {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .group-header {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* Ajustes para Celulares Pequenos */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .grid-groups {
+    /* Em telas muito pequenas, força um card por linha para melhor leitura */
+    grid-template-columns: 1fr; 
+  }
+
+  .team-name {
+    font-size: 0.9rem;
+  }
+
+  .flag-box {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  .position-badge {
+    font-size: 0.7rem;
+    padding: 1px 6px;
+  }
+}
+
+/* Ajuste para telas Ultra-Wide (opcional) */
+@media (min-width: 1400px) {
+  .grid-groups {
+    max-width: 1400px;
+    grid-template-columns: repeat(4, 1fr); /* Trava em 4 colunas se a tela for gigante */
+  }
+}
