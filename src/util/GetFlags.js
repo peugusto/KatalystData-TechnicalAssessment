@@ -46,6 +46,8 @@ export default function GetFlags(token) {
         'a5ff67f3-2504-49ab-ac8b-89a1c8e1db80': 'NZ',
         '8c4062cf-25a8-41a2-b1a2-2e030cc964dc': 'AT',
         'd06a51b7-6dbc-4124-974a-afc5ce64be8a': 'SN',
+        'fb63d86d-2a9d-431b-a498-3e04e6f308f8' : 'SA',
+        'd62aa8ba-eb3e-4e37-aa60-494a3dbbad1c' : 'HR'
     };
 
     const countryCode = flagsMap[token];

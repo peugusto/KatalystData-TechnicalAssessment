@@ -1,0 +1,150 @@
+/* Knockout.css */
+
+/* Container Principal - Garante que as três seções fiquem lado a lado */
+.bracket-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #610e5d; /* Cor roxa da imagem */
+  min-height: 100vh;
+  gap: 20px;
+  padding: 40px;
+  color: white;
+  font-family: sans-serif;
+}
+
+/* Seções Laterais (Esq/Dir) */
+.bracket-side {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Colunas (Oitavas, Quartas, Semis) */
+.round-col {
+  display: flex;
+  flex-direction: column;
+  /* Isso centraliza os times em relação aos jogos da coluna anterior */
+  justify-content: space-around; 
+  height: 600px; /* Altura fixa essencial para o alinhamento vertical */
+  min-width: 150px;
+}
+
+/* Títulos das Rodadas */
+.round-title {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-bottom: 10px;
+  opacity: 0.6;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Cards de Jogo */
+.match-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.team-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+/* Destaque para o vencedor */
+.is-winner {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.team-name {
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.team-score {
+  font-weight: bold;
+  color: #ffcc00; /* Amarelo da imagem */
+  margin-left: 10px;
+}
+
+/* Seção Central (Final) */
+.bracket-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px;
+}
+
+.final-stage {
+  text-align: center;
+}
+
+/* Card da Final maior e com borda dourada */
+.final-stage .match-card {
+  width: 180px;
+  border: 1.5px solid #ffcc00;
+  margin-bottom: 30px;
+}
+
+/* Exibição do Campeão */
+.trophy-display p {
+  font-size: 0.8rem;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.champion-label {
+  color: #ffcc00;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.champion-name {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+
+/* Knockout.css */
+
+.team-name {
+  display: flex;
+  align-items: center; /* Alinha bandeira e texto no centro vertical */
+  gap: 8px;           /* Espaço entre a bandeira e o nome */
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.team-name img {
+  width: 24px;        /* Largura da bandeira */
+  height: 16px;       /* Altura proporcional */
+  object-fit: cover;  /* Garante que a imagem não distorça */
+  border-radius: 2px; /* Cantos levemente arredondados */
+  box-shadow: 0 0 2px rgba(0,0,0,0.5); /* Pequena sombra para destacar no roxo */
+}
+
+/* Ajuste opcional para a pontuação não ficar colada */
+.score-area {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+}
+
+/* Ajuste para mensagens de erro */
+.error-message {
+  color: white;
+  text-align: center;
+  padding: 50px;
+  background: #610e5d;
+  height: 100vh;
+}
