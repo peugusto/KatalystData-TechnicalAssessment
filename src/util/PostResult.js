@@ -1,20 +1,22 @@
-import 'dotenv/config'
+
 export default async function PostResult(payload) {
 
 
     try {
 
-        const content = await fetch(process.env.API_POST, {
+        const content = await fetch("/api/WorldCup/FinalResult", {
             method: 'POST',
             headers: {
                 'git-user': 'peugusto',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(payload)
         });
 
         if (!content.ok) {
-            throw new Error("ERROR API")
+            throw new Error("Erro api")
         }
+        console.log("enviado")
 
     } catch (error) {
         console.error(error)
