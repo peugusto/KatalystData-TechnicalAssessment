@@ -1,16 +1,23 @@
-# React + Vite
+# 🏆 Simulador da Copa do Mundo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este simulador dinâmico faz parte do processo seletivo da Katalyst.
 
-Currently, two official plugins are available:
+## 🛠️ Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React.js**: Biblioteca principal para a interface.
+- **React Router**: Gerenciamento de rotas e estado entre telas.
+- **Frame Motion**: Animações para os componentes.
+- **CSS3**: Estilização com foco em Flexbox e Media Queries.
+- **Hooks**: Uso de `useMemo` para garantir a consistência dos resultados simulados.
 
-## React Compiler
+## Demonstração
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<img width="1600" height="899" alt="Image" src="https://github.com/user-attachments/assets/e2db2236-7de2-49c6-81d4-ea7b64359d10" />
+<img width="1600" height="899" alt="Image" src="https://github.com/user-attachments/assets/0df49b95-44aa-4d21-9720-e01b3dacfbe4" />
 
-## Expanding the ESLint configuration
+##  Observações
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Para buscar as bandeiras eu salvei todos os tokens dos paises em um objeto JavaScript para poder usar no flagsapi.com sem depender da API externa.
+- Durante o desenvolvimento, o servidor da API caiu e para não perder tempo eu mockei os dados com os tokens dos paises que eu já havia salvado, e deixei automatico para utilizar os dados mockados quando o servidor da API caísse.
+
+
