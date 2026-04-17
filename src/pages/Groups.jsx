@@ -61,7 +61,7 @@ export default function Groups() {
           </div>
         ))}
 
-        <button 
+        <button className='btnNext'
           disabled={!groupTables.length}
           onClick={() => navigate('/mata-mata', { state: { groupTables } })}
         >

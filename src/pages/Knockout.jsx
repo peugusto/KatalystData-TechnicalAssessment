@@ -80,6 +80,15 @@ function Knockout() {
 
   const { oitavas, quartas, semifinal, final } = resultados;
 
+  const json = {
+    "equiepA":final.t1,
+    "equiepB":final.t2,
+    "golsEquipeA": final.g1, 
+    "golsEquipeB": final.g2,
+    "golsPenaltyTimeA": final.penaltis ? final.penaltis.p1 : 0,
+    "golsPenaltyTimeA": final.penaltis ? final.penaltis.p2 : 0,
+  }
+
   const renderMatch = (m) => (
     <div className="match-card">
       <div className={`team-row ${m.winner === m.t1 ? 'is-winner' : ''}`}>
