@@ -21,6 +21,6 @@ export async function GetShuffledTeams(mockdata = null) {
         grupos.push(teams.slice(i, i + tamanhoGrupo));
     }
 
-    console.log(grupos);
+
     return grupos;
 }
