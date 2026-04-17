@@ -112,8 +112,10 @@ function Knockout() {
 
         <div className="round-col quartas">
           <h4 className="round-title">QUARTAS</h4>
-          {renderMatch(quartas[0])}
+          
+         {renderMatch(quartas[0])}
           {renderMatch(quartas[1])}
+        
         </div>
 
         <div className="round-col semis">
